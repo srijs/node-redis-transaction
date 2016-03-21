@@ -6,8 +6,7 @@ import * as sinonChai from 'sinon-chai';
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
 
-import {Key} from '../key';
-import {Kind} from '../kind';
+import {Kind, Key} from '../keyspace';
 import {WriteStringNoop, WriteListNoop} from '../ops';
 import {StringWriteBackend, ListWriteBackend} from './write';
 
