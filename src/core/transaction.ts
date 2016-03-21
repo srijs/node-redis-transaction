@@ -1,6 +1,13 @@
 import {Context} from './context';
-import {Executor} from './executor';
 import {Scope} from './keyspace';
+import {Log} from './log';
+import {ReadBackend} from './backend';
+
+export type Run<T> = (backend: ReadBackend) => Promise<[Log, T]>;
+
+export interface Executor {
+  exec<T>(scope: Scope, f: Run<T>): Promise<T>;
+}
 
 export class Transaction<T> {
   constructor(private _run: (ctx: Context) => Promise<T>) {}

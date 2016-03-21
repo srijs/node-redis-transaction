@@ -1,10 +1,9 @@
-import {Key, Kind, Scope, Transaction} from '../core';
-import {Redis, Pool} from '../redis';
+import * as tx from '../index';
 
-const k = new Key('foo', Kind.String);
-const s = Scope.fromKeys([k]);
+const k = new tx.Key('foo', tx.Kind.String);
+const s = tx.Scope.fromKeys([k]);
 
-const t = new Transaction(async (ctx) => {
+const t = new tx.Transaction(async (ctx) => {
   const exists1 = await ctx.withKey(k).exists();
   const get1 = await ctx.withStringAt(k).get();
   await ctx.withStringAt(k).set('bar');
@@ -17,7 +16,7 @@ const t = new Transaction(async (ctx) => {
   console.log(get1, get2, get3);
 });
 
-const p = new Pool({});
-const c = new Redis(p);
+const p = new tx.redis.Pool({});
+const c = new tx.redis.Redis(p);
 
 t.exec(s, c);

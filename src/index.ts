@@ -1,9 +1,12 @@
 import {
+  Kind,
+  Key,
   Scope,
   ScopeError,
   Log,
   Context,
-  Transaction
+  Transaction,
+  Executor
 } from './core';
 
 import * as redis from './redis';
@@ -11,9 +14,12 @@ import * as redis from './redis';
 export { redis }
 
 export {
+  Kind,
+  Key,
   Scope,
   ScopeError,
   Log,
   Context,
-  Transaction
+  Transaction,
+  Executor
 };

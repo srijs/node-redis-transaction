@@ -3,7 +3,7 @@
 import {ReadBackend, WriteBackend} from '../core/backend';
 import * as ops from '../core/ops';
 import {Key, Scope} from '../core/keyspace';
-import {Run, Executor} from '../core/executor';
+import {Run, Executor} from '../core/transaction';
 
 import {Pool} from './wrapper';
 import * as redis from './wrapper';
